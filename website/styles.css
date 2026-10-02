@@ -758,6 +758,42 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     text-overflow: ellipsis;
 }
 
+/* --- Social Links Styling --- */
+.socials-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #8c624c;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    transition: color 0.2s, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-link svg {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 10px;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-link:hover {
+    color: #d2a783;
+}
+
+.social-link:hover svg {
+    transform: scale(1.15) rotate(5deg);
+}
+
 /* --- Retro iPod UI --- */
 .ipod-container {
     position: fixed;
