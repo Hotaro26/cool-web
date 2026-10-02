@@ -25,12 +25,12 @@ html, body {
     overflow-x: hidden;
 }
 
-section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
+section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower):not(.butterfly-container):not(.butterfly):not(.wing):not(.butterfly-body) {
     animation: none !important;
     opacity: 0 !important;
 }
 
-section.fade-out *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
+section.fade-out *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower):not(.butterfly-container):not(.butterfly):not(.wing):not(.butterfly-body) {
     opacity: 0 !important;
     transition: opacity 0.5s ease-out !important;
 }
@@ -1120,10 +1120,10 @@ u {
         font-size: 0.75rem;
     }
     .s2-text-content {
-        top: 20%;
+        top: 25%;
     }
     .s2-text-content p {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 }
 
@@ -1131,9 +1131,9 @@ u {
     .content h1 { font-size: 2.5rem; }
     .content p { font-size: 1rem; }
     
-    .s2-title { font-size: 2.2rem; bottom: 3%; }
-    .s2-text-content { top: 15%; }
-    .s2-text-content p { font-size: 0.8rem; line-height: 1.4; }
+    .s2-title { font-size: 3rem; top: 12%; bottom: auto; }
+    .s2-text-content { top: 30%; }
+    .s2-text-content p { font-size: 0.85rem; line-height: 1.5; }
     
     .s3-title { font-size: 2.5rem; top: 5%; }
     .s3-columns { margin-top: 25%; gap: 8px; }
@@ -1156,4 +1156,130 @@ u {
 .ipod-screen.has-bg .ipod-artist {
     color: #ffffff;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}
+
+/* --- Realistic Vintage Butterfly --- */
+.butterfly-container {
+    position: absolute;
+    top: -45px;
+    left: -75px;
+    z-index: 9999;
+    pointer-events: none;
+    animation: flyAndLand 4s ease-out forwards;
+}
+
+.butterfly {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    transform-style: preserve-3d;
+    animation: flutterFast 0.2s 20 alternate ease-in-out;
+}
+
+.wing {
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 90px;
+    opacity: 0.95;
+}
+
+.wing-left {
+    left: 0;
+    transform-origin: right center;
+    animation: flapFastLeft 0.15s 27 alternate ease-in-out, flapRestLeft 5s infinite ease-in-out 4.05s forwards;
+    background: radial-gradient(circle at 70% 30%, #f5e6d3 6px, transparent 7px),
+                radial-gradient(circle at 40% 70%, #d2a783 8px, transparent 9px),
+                linear-gradient(135deg, #8c624c 0%, #5c3a21 40%, #2a1a10 100%);
+    clip-path: polygon(100% 20%, 40% 0%, 20% 5%, 5% 15%, 0% 25%, 5% 35%, 15% 45%, 35% 52%, 15% 58%, 5% 65%, 10% 80%, 25% 95%, 50% 100%, 75% 95%, 100% 80%);
+    border-radius: 20%; /* Smooth out any remaining corners via composite */
+}
+
+.wing-right {
+    left: 50px;
+    transform-origin: left center;
+    animation: flapFastRight 0.15s 27 alternate ease-in-out, flapRestRight 5s infinite ease-in-out 4.05s forwards;
+    background: radial-gradient(circle at 30% 30%, #f5e6d3 6px, transparent 7px),
+                radial-gradient(circle at 60% 70%, #d2a783 8px, transparent 9px),
+                linear-gradient(-135deg, #8c624c 0%, #5c3a21 40%, #2a1a10 100%);
+    clip-path: polygon(0% 20%, 60% 0%, 80% 5%, 95% 15%, 100% 25%, 95% 35%, 85% 45%, 65% 52%, 85% 58%, 95% 65%, 90% 80%, 75% 95%, 50% 100%, 25% 95%, 0% 80%);
+    border-radius: 20%;
+}
+
+.butterfly-body {
+    position: absolute;
+    top: 10px;
+    left: 47px;
+    width: 6px;
+    height: 60px;
+    background: #2a1a10;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+/* Antennae */
+.butterfly-body::before, .butterfly-body::after {
+    content: '';
+    position: absolute;
+    top: -22px;
+    width: 2.5px;
+    height: 26px;
+    background: #2a1a10;
+    border-radius: 2px;
+}
+.butterfly-body::before {
+    left: -4px;
+    transform: rotate(-30deg);
+    box-shadow: 0 -3px 0 1.5px #2a1a10;
+}
+.butterfly-body::after {
+    right: -4px;
+    transform: rotate(30deg);
+    box-shadow: 0 -3px 0 1.5px #2a1a10;
+}
+
+@keyframes flapFastLeft {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(70deg); }
+}
+@keyframes flapRestLeft {
+    0% { transform: rotateY(15deg); }
+    5% { transform: rotateY(70deg); }
+    10% { transform: rotateY(15deg); }
+    15% { transform: rotateY(70deg); }
+    20% { transform: rotateY(15deg); }
+    100% { transform: rotateY(15deg); }
+}
+
+@keyframes flapFastRight {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(-70deg); }
+}
+@keyframes flapRestRight {
+    0% { transform: rotateY(-15deg); }
+    5% { transform: rotateY(-70deg); }
+    10% { transform: rotateY(-15deg); }
+    15% { transform: rotateY(-70deg); }
+    20% { transform: rotateY(-15deg); }
+    100% { transform: rotateY(-15deg); }
+}
+
+@keyframes flutterFast {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-15px); }
+}
+
+@keyframes flyAndLand {
+    0% {
+        transform: translate(-60vw, 60vh) scale(0.2) rotate(60deg);
+    }
+    40% {
+        transform: translate(-20vw, -10vh) scale(0.5) rotate(35deg);
+    }
+    75% {
+        transform: translate(-5vw, 5vh) scale(0.6) rotate(25deg);
+    }
+    100% {
+        transform: translate(0px, 0px) scale(0.4) rotate(15deg);
+    }
 }
