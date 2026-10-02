@@ -472,8 +472,8 @@ section.fade-out *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     .right-flower { right: -10px; bottom: -10px; }
     
     /* Section 2 adjustments */
-    .s2-title { font-size: 3rem; bottom: 5%; left: 5%; }
-    .s2-text-content { top: 15%; right: 5%; width: 90%; text-align: left; }
+    .s2-title { font-size: 3.5rem; top: 12%; bottom: auto; left: 0; width: 100%; text-align: center; }
+    .s2-text-content { top: 32%; right: auto; left: 5%; width: 90%; text-align: center; }
     .s2-text-content p { font-size: 1rem; }
     .s2-tr-flower { width: 120px; top: -10px; right: -10px; }
     .s2-bl-flower { width: 120px; left: -10px; bottom: -10px; }
@@ -1053,17 +1053,7 @@ u {
 }
 
 /* --- Additional Responsiveness Fixes --- */
-@media (max-width: 1024px) {
-    .s3-columns {
-        width: 90%;
-        gap: 20px;
-    }
-    .col {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .white-patch {
         overflow-y: auto;
         overflow-x: hidden;
@@ -1078,7 +1068,30 @@ u {
         background-color: #8c624c;
         border-radius: 3px;
     }
-    
+
+    /* Section 2 tablet fixes */
+    .s2-title { font-size: 4.5rem; top: 12%; bottom: auto; left: 0; width: 100%; text-align: center; }
+    .s2-text-content { width: 90%; top: 32%; right: auto; left: 5%; text-align: center; }
+    .s2-text-content p { font-size: 1.15rem; line-height: 1.6; }
+
+    /* Section 3 tablet fixes */
+    .s3-title { font-size: 5rem; top: 12%; }
+    .s3-columns {
+        width: 90%;
+        gap: 25px;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 25%;
+    }
+    .col {
+        font-size: 1.15rem;
+        width: 90%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+
     .s3-columns {
         margin-top: 25%;
         gap: 10px;
