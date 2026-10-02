@@ -657,10 +657,10 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 /* The Popup Cube */
 .playlist-menu {
     position: absolute;
-    top: 52px;
+    top: 54px;
     left: 0;
     width: 200px;
-    max-height: 140px; /* Making it scrollable */
+    max-height: 140px;
     background-color: #f5e6d3;
     border: 3px solid #8c624c;
     border-radius: 12px;
@@ -670,11 +670,22 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     flex-direction: column;
     gap: 8px;
     opacity: 0;
-    pointer-events: none;
+    visibility: hidden;
     transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease 2s, transform 0.3s ease 2s, visibility 0s linear 2.3s;
     overflow-y: auto;
     box-sizing: border-box;
+}
+
+/* Bridge the physical gap between the circle and the box so hover doesn't break */
+.playlist-menu::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent;
 }
 
 .playlist-menu::-webkit-scrollbar {
@@ -691,9 +702,9 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 .music-toggle:hover .playlist-menu,
 .playlist-menu:hover {
     opacity: 1;
-    pointer-events: auto;
+    visibility: visible;
     transform: translateY(0);
-    transition-delay: 0.1s;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
 }
 
 .song-btn {
@@ -858,6 +869,12 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.wheel-center:active {
+    transform: translate(-50%, -50%) scale(0.9);
 }
 
 @media (max-width: 768px) {

@@ -377,21 +377,39 @@
         const prevBtn = document.getElementById('ipod-prev');
         const nextBtn = document.getElementById('ipod-next');
         const menuBtn = document.querySelector('.menu-btn');
+        const centerBtn = document.querySelector('.wheel-center');
         
-        playBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            playCutePop();
-            if (!audioPlayer.src) return;
+        function togglePlayPause() {
+            if (!audioPlayer.src || audioPlayer.src === window.location.href) {
+                // If no song is loaded, play the first track automatically
+                playLocalSong(0);
+                return;
+            }
             
             if (isPlaying) {
                 audioPlayer.pause();
                 isPlaying = false;
                 statusTxt.textContent = '❚❚ PAUSED';
             } else {
-                audioPlayer.play();
-                isPlaying = true;
-                statusTxt.textContent = '▶ PLAYING';
+                audioPlayer.play().then(() => {
+                    isPlaying = true;
+                    statusTxt.textContent = '▶ PLAYING';
+                }).catch(e => {
+                    statusTxt.textContent = 'ERROR';
+                });
             }
+        }
+        
+        playBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playCutePop();
+            togglePlayPause();
+        });
+        
+        centerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playCutePop();
+            togglePlayPause();
         });
 
         // Prev/Next skips tracks for the local playlist
