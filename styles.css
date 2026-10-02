@@ -29,6 +29,11 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     opacity: 0 !important;
 }
 
+section.fade-out *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
+    opacity: 0 !important;
+    transition: opacity 0.5s ease-out !important;
+}
+
 .hero {
     width: 100%;
     height: 100vh;
