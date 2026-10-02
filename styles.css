@@ -937,8 +937,8 @@ u {
 
 .ipod-screen {
     width: 100%;
-    height: 120px;
-    background-color: #d2a783 !important; /* Screen background */
+    height: 140px;
+    background-color: #d2a783; /* Screen background */
     border: 3px solid #8c624c;
     border-radius: 10px;
     margin-bottom: 25px;
@@ -1141,4 +1141,12 @@ u {
     .ipod-container.open { transform: translate(-50%, -50%) scale(0.85); }
     
     .music-toggle { width: 36px; height: 36px; }
+}
+
+/* iPod Background Overlay Text */
+.ipod-screen.has-bg .ipod-status,
+.ipod-screen.has-bg .ipod-track-info,
+.ipod-screen.has-bg .ipod-artist {
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 }

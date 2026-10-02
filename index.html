@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>yana</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="styles.css?v=13">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@600&display=swap" rel="stylesheet">
@@ -337,9 +337,19 @@
         const artistInfo = document.getElementById('ipod-artist');
         const statusTxt = document.querySelector('.ipod-status');
 
-        function updateScreen(title, artist) {
+        const ipodScreen = document.querySelector('.ipod-screen');
+        function updateScreen(title, artist, thumbSrc) {
             trackInfo.textContent = title;
             artistInfo.textContent = artist;
+            if (thumbSrc) {
+                ipodScreen.style.backgroundImage = `linear-gradient(rgba(210, 167, 131, 0.6), rgba(210, 167, 131, 0.6)), url('${thumbSrc}')`;
+                ipodScreen.style.backgroundSize = 'cover';
+                ipodScreen.style.backgroundPosition = 'center';
+                ipodScreen.classList.add('has-bg');
+            } else {
+                ipodScreen.style.backgroundImage = 'none';
+                ipodScreen.classList.remove('has-bg');
+            }
         }
 
         // --- Draggable iPod Logic ---
@@ -393,10 +403,13 @@
 
         // Local Playlist data pulling from your assets/Music folder
         const localPlaylist = [
-            { src: 'assets/Music/beautiful boy - Esha Tewari.flac', title: 'Beautiful Boy', artist: 'Esha Tewari' },
-            { src: 'assets/Music/may you never forget me - Temachii.flac', title: 'May You Never Forget Me', artist: 'Temachii' },
-            { src: 'assets/Music/Tip Toe - HYBS.flac', title: 'Tip Toe', artist: 'HYBS' },
-            { src: 'assets/Music/White Winter Hymnal - Fleet Foxes.flac', title: 'White Winter Hymnal', artist: 'Fleet Foxes' }
+            { src: 'assets/Music/beautiful boy - Esha Tewari.flac', title: 'Beautiful Boy', artist: 'Esha Tewari', thumb: 'assets/beautiful_boy_thumb.png' },
+            { src: 'assets/Music/may you never forget me - Temachii.flac', title: 'May You Never Forget Me', artist: 'Temachii', thumb: 'assets/may_you_never_forget_me_thumb.png' },
+            { src: 'assets/Music/Tip Toe - HYBS.flac', title: 'Tip Toe', artist: 'HYBS', thumb: 'assets/tiptoe_thumb.png' },
+            { src: 'assets/Music/White Winter Hymnal - Fleet Foxes.flac', title: 'White Winter Hymnal', artist: 'Fleet Foxes', thumb: 'assets/white_winter_hymnal_thumb.png' },
+            { src: 'assets/Music/Meant To Be - Cuntsniffer.flac', title: 'Meant To Be', artist: 'Cuntsniffer', thumb: 'assets/meant_to_be_thumb.png' },
+            { src: 'assets/Music/My Heart Will Go On - Love Theme from Titanic - Céline Dion.flac', title: 'My Heart Will Go On', artist: 'Céline Dion', thumb: 'assets/celine_dion_thumb.png' },
+            { src: 'assets/Music/500 Miles - Peter, Paul and Mary.flac', title: '500 Miles', artist: 'Peter, Paul and Mary', thumb: 'assets/peter_paul_mary_thumb.png' }
         ];
         let currentTrackIndex = 0;
 
@@ -416,8 +429,9 @@
 
         function playLocalSong(index) {
             currentTrackIndex = index;
-            updateScreen(localPlaylist[index].title, localPlaylist[index].artist);
+            updateScreen(localPlaylist[index].title, localPlaylist[index].artist, localPlaylist[index].thumb);
             audioPlayer.src = localPlaylist[index].src;
+            statusTxt.textContent = 'LOADING...';
             audioPlayer.play().then(() => {
                 isPlaying = true;
                 statusTxt.textContent = '▶ PLAYING';
@@ -452,6 +466,7 @@
                 isPlaying = false;
                 statusTxt.textContent = '❚❚ PAUSED';
             } else {
+                statusTxt.textContent = 'LOADING...';
                 audioPlayer.play().then(() => {
                     isPlaying = true;
                     statusTxt.textContent = '▶ PLAYING';
@@ -513,7 +528,10 @@
         // Remove the force-hide class when they hover again
         musicToggleElement.addEventListener('mouseenter', () => {
             playlistMenu.classList.remove('force-hide');
-        });        // Auto-open iPod on Desktop and set up first-click autoplay
+        });        // Initialize screen with the first track's artwork
+        updateScreen(localPlaylist[0].title, localPlaylist[0].artist, localPlaylist[0].thumb);
+
+        // Auto-open iPod on Desktop and set up first-click autoplay
         if (window.innerWidth > 768) {
             ipodContainer.classList.add("open");
             
