@@ -434,6 +434,26 @@
             playCutePop();
             ipodContainer.classList.remove('open');
         });
+
+        // --- Force Hide Playlist Menu on Click Outside ---
+        const musicToggleElement = document.getElementById('music-toggle');
+        
+        document.addEventListener('mousedown', (e) => {
+            // If they clicked outside the music toggle entirely
+            if (!musicToggleElement.contains(e.target)) {
+                playlistMenu.classList.add('force-hide');
+            }
+        });
+        document.addEventListener('touchstart', (e) => {
+            if (!musicToggleElement.contains(e.target)) {
+                playlistMenu.classList.add('force-hide');
+            }
+        });
+        
+        // Remove the force-hide class when they hover again
+        musicToggleElement.addEventListener('mouseenter', () => {
+            playlistMenu.classList.remove('force-hide');
+        });
     </script>
 </body>
 </html>

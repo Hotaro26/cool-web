@@ -654,27 +654,34 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     display: block;
 }
 
-/* The Popup Cube */
+/* The Popup Cube (Retro Vibe) */
 .playlist-menu {
     position: absolute;
     top: 54px;
     left: 0;
     width: 200px;
     max-height: 140px;
-    background-color: #f5e6d3;
+    background-color: #d2a783; /* Retro screen color */
     border: 3px solid #8c624c;
-    border-radius: 12px;
-    box-shadow: 2px 2px 0px rgba(140, 98, 76, 0.4);
-    padding: 10px;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1), 2px 2px 0px rgba(140, 98, 76, 0.4);
+    padding: 8px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 2px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: opacity 0.3s ease 2s, transform 0.3s ease 2s, visibility 0s linear 2.3s;
     overflow-y: auto;
     box-sizing: border-box;
+}
+
+.playlist-menu.force-hide {
+    transition: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
 /* Bridge the physical gap between the circle and the box so hover doesn't break */
@@ -689,14 +696,14 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 }
 
 .playlist-menu::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
 }
 .playlist-menu::-webkit-scrollbar-track {
     background: transparent;
 }
 .playlist-menu::-webkit-scrollbar-thumb {
     background-color: #8c624c;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 .music-toggle:hover .playlist-menu,
@@ -711,12 +718,12 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     font-family: 'Nunito', sans-serif;
     font-size: 0.75rem;
     font-weight: 800;
-    color: #ffffff;
-    background-color: #8c624c;
-    border-radius: 8px;
+    color: #8c624c; /* Retro dark text */
+    background-color: transparent;
+    border-radius: 4px;
     padding: 6px 10px;
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: background-color 0.1s, color 0.1s;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -724,11 +731,17 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     width: 100%;
     box-sizing: border-box;
     flex-shrink: 0;
+    border-bottom: 1px dashed rgba(140, 98, 76, 0.2);
+}
+
+.song-btn:last-child {
+    border-bottom: none;
 }
 
 .song-btn:hover {
-    background-color: #d2a783;
-    transform: translateX(4px);
+    background-color: #8c624c;
+    color: #d2a783; /* Inverted retro hover */
+    transform: none; /* Removed sliding for retro feel */
 }
 
 /* iPod Artist Info */
@@ -748,7 +761,7 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 /* --- Retro iPod UI --- */
 .ipod-container {
     position: fixed;
-    top: 80px;
+    top: 50%;
     left: 40px;
     width: 220px;
     height: 340px;
@@ -764,14 +777,15 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     /* Hidden by default */
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-20px) scale(0.9);
+    transform: translateY(-50%) scale(0.9);
     transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-sizing: border-box;
 }
 
 .ipod-container.open {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0) scale(1);
+    transform: translateY(-50%) scale(1);
 }
 
 .ipod-screen {
