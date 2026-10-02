@@ -15,7 +15,11 @@ img {
     -webkit-user-drag: none;
 }
 
-body {
+html, body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
     font-family: 'Nunito', sans-serif;
     overflow-x: hidden;
 }
@@ -26,7 +30,7 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 }
 
 .hero {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-image: url('assets/hero_background_cube.png');
     background-size: cover;
@@ -218,7 +222,7 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 
 /* Section 2 Styles */
 .section-2 {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-image: url('assets/hero_background_cube.png');
     background-size: cover;
@@ -325,7 +329,7 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 
 /* Section 3 Styles */
 .section-3, .section-4 {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-image: url('assets/hero_background_cube.png');
     background-size: cover;
@@ -546,7 +550,7 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: rgba(140, 98, 76, 0.85); /* Solid semi-transparent brown instead of overlapping grid */
     backdrop-filter: blur(8px);
@@ -857,7 +861,7 @@ u {
 .ipod-container {
     position: fixed;
     top: 50%;
-    left: 40px;
+    right: 40px;
     width: 220px;
     height: 340px;
     background-color: #f5e6d3; /* Light cream/brown body */
@@ -988,7 +992,7 @@ u {
 
 @media (max-width: 768px) {
     .music-toggle { left: 20px; top: 20px; }
-    .ipod-container { left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.9); }
+    .ipod-container { left: 50%; right: auto; top: 50%; transform: translate(-50%, -50%) scale(0.9); }
     .ipod-container.open { transform: translate(-50%, -50%) scale(1); }
 }
 
