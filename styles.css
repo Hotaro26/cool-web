@@ -758,6 +758,23 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     text-overflow: ellipsis;
 }
 
+
+/* Highlight & Underline Styling */
+mark {
+    background-color: #d2a783;
+    color: #fff;
+    padding: 0 4px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+u {
+    text-decoration: underline;
+    text-decoration-color: #d2a783;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 3px;
+}
+
 /* --- Social Links Styling --- */
 .socials-container {
     display: flex;
@@ -794,11 +811,11 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     transform: scale(1.15) rotate(5deg);
 }
 
-.discord-link {
+.social-link {
     position: relative;
 }
 
-.discord-tooltip {
+.social-tooltip {
     position: absolute;
     bottom: 110%; /* Sit just above the link */
     background-color: #f5e6d3;
@@ -819,7 +836,7 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 }
 
 /* Add a cute little triangle pointer to the bottom of the tooltip */
-.discord-tooltip::after {
+.social-tooltip::after {
     content: '';
     position: absolute;
     top: 100%;
@@ -830,7 +847,7 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     border-color: #8c624c transparent transparent transparent;
 }
 
-.discord-link:hover .discord-tooltip {
+.social-link:hover .social-tooltip {
     opacity: 1;
     visibility: visible;
     transform: translateY(0) scale(1);
