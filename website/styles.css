@@ -794,6 +794,48 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     transform: scale(1.15) rotate(5deg);
 }
 
+.discord-link {
+    position: relative;
+}
+
+.discord-tooltip {
+    position: absolute;
+    bottom: 110%; /* Sit just above the link */
+    background-color: #f5e6d3;
+    border: 3px solid #8c624c;
+    border-radius: 8px;
+    padding: 6px 12px;
+    color: #8c624c;
+    font-size: 0.8rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 2px 2px 0px rgba(140, 98, 76, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.9);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+}
+
+/* Add a cute little triangle pointer to the bottom of the tooltip */
+.discord-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #8c624c transparent transparent transparent;
+}
+
+.discord-link:hover .discord-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
 /* --- Retro iPod UI --- */
 .ipod-container {
     position: fixed;
