@@ -812,11 +812,18 @@ section.fade-out *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 
 /* Highlight & Underline Styling */
 mark {
-    background-color: #d2a783 !important;
+    background-color: rgba(210, 167, 131, 0.9) !important;
     color: #fff !important;
-    padding: 0 4px;
-    border-radius: 4px;
+    padding: 2px 8px;
     font-weight: 700;
+    display: inline-block;
+    background-image: 
+      linear-gradient(rgba(245, 230, 211, 0.4) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(245, 230, 211, 0.4) 2px, transparent 2px);
+    background-size: 15px 15px;
+    clip-path: polygon(0% 0%, 100% 0%, 96% 15%, 100% 30%, 96% 45%, 100% 60%, 96% 75%, 100% 90%, 98% 100%, 0% 100%, 2% 85%, 0% 70%, 2% 55%, 0% 40%, 2% 25%, 0% 10%, 0% 0%);
+    transform: rotate(-1deg);
+    margin: 0 2px;
 }
 
 u {
