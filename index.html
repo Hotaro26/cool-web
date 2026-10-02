@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project</title>
+    <title>yana</title>
+    <link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
     <link rel="stylesheet" href="styles.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -469,21 +470,45 @@
         const musicToggleElement = document.getElementById('music-toggle');
         
         document.addEventListener('mousedown', (e) => {
-            // If they clicked outside the music toggle entirely
-            if (!musicToggleElement.contains(e.target)) {
+            if (!musicToggleElement.contains(e.target) && !ipodContainer.contains(e.target)) {
                 playlistMenu.classList.add('force-hide');
             }
         });
         document.addEventListener('touchstart', (e) => {
-            if (!musicToggleElement.contains(e.target)) {
+            if (!musicToggleElement.contains(e.target) && !ipodContainer.contains(e.target)) {
                 playlistMenu.classList.add('force-hide');
             }
         });
         
-        // Remove the force-hide class when they hover again
         musicToggleElement.addEventListener('mouseenter', () => {
             playlistMenu.classList.remove('force-hide');
         });
+
+        // --- INSTANT AUTOPLAY LOGIC ---
+        // Browsers block autoplay unless the user has clicked. We try to play instantly,
+        // and if it gets blocked, we wait for their very first click anywhere on the screen!
+        function attemptAutoplay() {
+            if (!audioPlayer.src || audioPlayer.src === window.location.href) {
+                currentTrackIndex = 0; // Load first track
+                audioPlayer.src = localPlaylist[0].src;
+                updateScreen(localPlaylist[0].title, localPlaylist[0].artist);
+            }
+            audioPlayer.play().then(() => {
+                isPlaying = true;
+                statusTxt.textContent = '▶ PLAYING';
+            }).catch(() => {
+                // Browser blocked it, wait for first click!
+                document.body.addEventListener('click', function firstClickPlay() {
+                    audioPlayer.play();
+                    isPlaying = true;
+                    statusTxt.textContent = '▶ PLAYING';
+                    document.body.removeEventListener('click', firstClickPlay); // Remove listener after first click
+                }, { once: true });
+            });
+        }
+
+        // Try playing as soon as the page loads
+        window.addEventListener('DOMContentLoaded', attemptAutoplay);
     </script>
 </body>
 </html>
