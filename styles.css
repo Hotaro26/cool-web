@@ -505,6 +505,39 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 }
 
 /* --- Hamburger Menu Styles --- */
+
+/* --- Menu Overlay Cute Elements --- */
+.menu-deco {
+    position: absolute;
+    opacity: 0;
+    filter: brightness(0) saturate(100%) invert(86%) sepia(21%) saturate(934%) hue-rotate(334deg) brightness(98%) contrast(92%);
+    transform: scale(0.5);
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+}
+.menu-overlay.open .menu-deco {
+    opacity: 0.9;
+}
+.menu-bow-tl { top: 15%; left: 15%; width: 100px; }
+.menu-overlay.open .menu-bow-tl { transform: scale(1) rotate(-20deg); }
+
+.menu-flower-tr { top: 20%; right: 15%; width: 120px; }
+.menu-overlay.open .menu-flower-tr { transform: scale(1) rotate(15deg); }
+
+.menu-rainbow-bl { bottom: 20%; left: 15%; width: 150px; }
+.menu-overlay.open .menu-rainbow-bl { transform: scale(1) rotate(-10deg); }
+
+.menu-flower-br { bottom: 15%; right: 15%; width: 130px; }
+.menu-overlay.open .menu-flower-br { transform: scale(1) rotate(-15deg); }
+
+@media (max-width: 768px) {
+    .menu-bow-tl { top: 5%; left: 5%; width: 70px; }
+    .menu-flower-tr { top: 8%; right: 5%; width: 80px; }
+    .menu-rainbow-bl { bottom: 10%; left: 5%; width: 100px; }
+    .menu-flower-br { bottom: 5%; right: 5%; width: 90px; }
+}
+
+
 .hamburger-container {
     position: fixed;
     top: 30px;
@@ -612,7 +645,40 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 }
 
 @media (max-width: 768px) {
-    .hamburger-container { top: 20px; right: 20px; }
+    
+/* --- Menu Overlay Cute Elements --- */
+.menu-deco {
+    position: absolute;
+    opacity: 0;
+    filter: brightness(0) saturate(100%) invert(86%) sepia(21%) saturate(934%) hue-rotate(334deg) brightness(98%) contrast(92%);
+    transform: scale(0.5);
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+}
+.menu-overlay.open .menu-deco {
+    opacity: 0.9;
+}
+.menu-bow-tl { top: 15%; left: 15%; width: 100px; }
+.menu-overlay.open .menu-bow-tl { transform: scale(1) rotate(-20deg); }
+
+.menu-flower-tr { top: 20%; right: 15%; width: 120px; }
+.menu-overlay.open .menu-flower-tr { transform: scale(1) rotate(15deg); }
+
+.menu-rainbow-bl { bottom: 20%; left: 15%; width: 150px; }
+.menu-overlay.open .menu-rainbow-bl { transform: scale(1) rotate(-10deg); }
+
+.menu-flower-br { bottom: 15%; right: 15%; width: 130px; }
+.menu-overlay.open .menu-flower-br { transform: scale(1) rotate(-15deg); }
+
+@media (max-width: 768px) {
+    .menu-bow-tl { top: 5%; left: 5%; width: 70px; }
+    .menu-flower-tr { top: 8%; right: 5%; width: 80px; }
+    .menu-rainbow-bl { bottom: 10%; left: 5%; width: 100px; }
+    .menu-flower-br { bottom: 5%; right: 5%; width: 90px; }
+}
+
+
+.hamburger-container { top: 20px; right: 20px; }
     .menu-overlay ul { padding: 40px 50px; }
     .menu-overlay a { font-size: 3rem; }
 }
