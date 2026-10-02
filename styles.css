@@ -569,10 +569,7 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 .menu-overlay ul {
     list-style: none;
     text-align: center;
-    padding: 60px 80px;
-    background-color: #f5e6d3;
-    border: 4px solid #8c624c;
-    border-radius: 30px;
+    padding: 0;
     transform: scale(0.8);
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -589,13 +586,13 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     text-decoration: none;
     font-family: 'Chewy', cursive;
     font-size: 4rem;
-    color: #8c624c;
+    color: #f5e6d3;
     transition: color 0.3s, transform 0.3s;
     display: inline-block;
 }
 
 .menu-overlay a:hover {
-    color: #d2a783;
+    color: #ffffff;
     transform: scale(1.1) rotate(-5deg);
 }
 
