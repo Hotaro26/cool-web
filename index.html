@@ -489,6 +489,10 @@
         musicToggleElement.addEventListener('mouseenter', () => {
             playlistMenu.classList.remove('force-hide');
         });
+        // Auto-open iPod on Desktop
+        if (window.innerWidth > 768) {
+            ipodContainer.classList.add("open");
+        }
     </script>
 </body>
 </html>
