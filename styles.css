@@ -661,7 +661,7 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     left: 0;
     width: 200px;
     max-height: 140px;
-    background-color: #d2a783; /* Retro screen color */
+    background-color: #d2a783 !important; /* Retro screen color */
     border: 3px solid #8c624c;
     border-radius: 10px;
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1), 2px 2px 0px rgba(140, 98, 76, 0.4);
@@ -761,8 +761,8 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
 
 /* Highlight & Underline Styling */
 mark {
-    background-color: #d2a783;
-    color: #fff;
+    background-color: #d2a783 !important;
+    color: #fff !important;
     padding: 0 4px;
     border-radius: 4px;
     font-weight: 700;
@@ -886,7 +886,7 @@ u {
 .ipod-screen {
     width: 100%;
     height: 120px;
-    background-color: #d2a783; /* Screen background */
+    background-color: #d2a783 !important; /* Screen background */
     border: 3px solid #8c624c;
     border-radius: 10px;
     margin-bottom: 25px;
