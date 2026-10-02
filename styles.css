@@ -589,6 +589,31 @@ section:not(.in-view) *:not(.flower):not(.s4-bl-flower):not(.s4-br-flower) {
     color: #f5e6d3;
     transition: color 0.3s, transform 0.3s;
     display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+.menu-overlay a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -15%;
+    width: 130%;
+    height: 80%;
+    transform-origin: left center;
+    transform: translateY(-50%) scaleX(0);
+    background-color: rgba(210, 167, 131, 0.7);
+    background-image: 
+      linear-gradient(rgba(245, 230, 211, 0.4) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(245, 230, 211, 0.4) 2px, transparent 2px);
+    background-size: 15px 15px;
+    z-index: -1;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    clip-path: polygon(0% 0%, 100% 0%, 94% 10%, 100% 20%, 94% 30%, 100% 40%, 96% 50%, 100% 60%, 95% 70%, 100% 80%, 95% 90%, 100% 100%, 0% 100%, 3% 90%, 0% 80%, 2% 70%, 0% 60%, 6% 50%, 0% 40%, 2% 30%, 0% 20%, 6% 10%, 0% 0%);
+}
+
+.menu-overlay a:hover::before {
+    transform: translateY(-50%) scaleX(1) rotate(2deg); /* Counter-rotate against the text's -5deg rotation for dynamic feel */
 }
 
 .menu-overlay a:hover {
